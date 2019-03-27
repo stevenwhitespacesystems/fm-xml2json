@@ -159,6 +159,7 @@ Project Link: [fm-xml2json](https://github.com/stevenwhitespacesystems/fm-xml2js
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [Jeremy Bante's #Parameters](http://www.modularfilemaker.org/module/parameters/)
+* [Inspired by xml-js](https://github.com/nashwaan/xml-js)
 * [Computech IT Services](https://www.computech-it.co.uk)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
