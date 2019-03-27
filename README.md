@@ -4,7 +4,7 @@
 [![Commit Shield][commit-shield]]()
 [![Contributors][contributors-shield]]()
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url
 
 <!-- PROJECT LOGO -->
 <br />
@@ -16,7 +16,7 @@
   <h3 align="center">fm-xml2json</h3>
 
   <p align="center">
-    An XML Parser that converts the XML into JSON on the FileMaker Pro Platform.
+    An XML Parser that converts XML into JSON on the FileMaker Pro Platform.
     <br />
     <a href="https://github.com/stevenwhitespacesystems/fm-xml2json"><strong>Explore the docs »</strong></a>
     <br />
@@ -51,7 +51,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-As we delved into the world of REST APIs using FileMaker we stumbled across an issue.
+As we delved into the world of REST APIs using FileMaker, we stumbled across an issue.
 
 *How do we handle XML responses?*
 
@@ -61,13 +61,13 @@ However, we found out during our development of [fmapi-aws-s3](https://whitespac
 
 This was an issue and with any issue, solutions are born.
 
-We present **fm-xml2json** solution.
+We present [fmapi](https://whitespacesystems.co.uk/filemaker-3rd-party-api-integration/)-fm-xml2json.
 
-This is a FileMaker script where you pass in some **valid** XML and it will return a valid JSON object.
-
+A FileMaker script which when passed a **valid** XML string, will covert this string into a JSON object.
 
 ### Built With
 * [FileMaker Pro](https://www.filemaker.com/)
+* No 3rd party plugins.
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -84,7 +84,7 @@ Using the script with anything less than 16 will have unexpected behaviour.
 
 #### Custom Functions
 
-We make use of the #Name-Value custom function provided by [filemakerstandards](https://github.com/filemakerstandards/fmpstandards/tree/master/Functions/%23Name-Value)
+We make use of the #Name-Value custom function provided by [filemakerstandards](https://github.com/filemakerstandards/fmpstandards/tree/master/Functions/%23Name-Value).
 
 Please copy the following Custom Functions to your solution before copying the script:
 - [# ( name ; value )](https://raw.githubusercontent.com/filemakerstandards/fmpstandards/master/Functions/%23Name-Value/%23.fmfn)
@@ -94,24 +94,26 @@ Please copy the following Custom Functions to your solution before copying the s
 
 ##### Large XML Data
 
-FileMaker Pro is not the most efficient tool to use to parse text. This script was designed primarily for small xml packets sent back from APIs. It wasn't designed in mind to convert large XML files into JSON.
+FileMaker Pro is not the most efficient tool for text parsing. This script was designed primarily for small XML packets sent back from APIs. It wasn't designed in mind to convert large XML files into JSON.
 
-However if given enough time, this script will convert large XML files into JSON and has been optimised to the best of our ability. Unfortunately FileMaker can only go so far before it starts to fall over.
+However, if given enough time, this script will convert large XML files into JSON and has been optimised to the best of our ability.
 
-We've performed some benchmark tests to give you and idea of how long it takes the script to execute.
+Unfortunately, FileMaker can only go so far before it starts to fall over.
 
-XML Size (KB) | Execution Time (ms)
-------------- | -------------------
-4 | 958
-8 | 1644
-17 | 3430
-35 | 8767
-71 | 26435
-142 | ??
+We've performed some benchmark tests to give you an idea of how long it takes the script to execute.
+
+XML Size (KB) | Execution Time (ms) | Readable Time
+------------- | ------------------- | -------------
+4 | 958 | 0.9s
+8 | 1644 | 1.6s
+17 | 3430 | 3.4s
+35 | 8767 | 8.7s
+71 | 26435 | 26.4s
+142 | 87973 | 1min 27.9s
 
 *KB was determined using FileMaker's `Length ( field )` function.*
 
-As stated above this script wasn't developed with the purpose of taking large XML data and converting it to JSON. If you do have this need, we highly suggest using a plugin or doing it outside FileMaker and then importing this information
+As stated above this script wasn't developed with the purpose of taking large XML data and converting it to JSON. If you do have this need, we **strongly** suggest using a plugin or performing the conversion outside of FileMaker and then importing the result back into FileMaker.
 
 ##### FileMaker Text Parsing Functions
 
