@@ -165,14 +165,14 @@ Project Link: [fm-xml2json](https://github.com/stevenwhitespacesystems/fm-xml2js
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[filemaker-shield]: https://img.shields.io/badge/filemaker-%3E%3D%2016.0.0-009edb.svg?style=flat-square
-[platform-shield]: https://img.shields.io/badge/platform-Pro%20%7C%20Go%20%7C%20Server%20%7C%20Webdirect%20%7C%20Cloud-purple.svg?style=flat-square
+[filemaker-shield]: https://img.shields.io/badge/filemaker-%3E%3D%2016.0.0-009edb.svg
+[platform-shield]: https://img.shields.io/badge/platform-Pro%20%7C%20Go%20%7C%20Server%20%7C%20Webdirect%20%7C%20Cloud-purple.svg
 [contributors-shield]: https://img.shields.io/github/contributors/stevenwhitespacesystems/fm-xml2json.svg
-[license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[license-shield]: https://img.shields.io/badge/license-MIT-blue.svg
 [commit-shield]: https://img.shields.io/github/last-commit/stevenwhitespacesystems/fm-xml2json.svg
 [license-url]: https://choosealicense.com/licenses/mit
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=0077B5
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=0077B5
 [linkedin-url]: https://www.linkedin.com/in/stevenmcgill/
-[facebook-shield]: https://img.shields.io/badge/-facebook-white.svg?style=flat-square&logo=facebook&colorB=3578E5
+[facebook-shield]: https://img.shields.io/badge/-facebook-white.svg?logo=facebook&colorB=3578E5
 [facebook-url]: https://www.facebook.com/WhitespaceSystemsLtd/
 [product-screenshot]: logo.png
