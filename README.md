@@ -1,11 +1,3 @@
-<!-- PROJECT SHIELDS -->
-[![FileMaker Version][filemaker-shield]]()
-[![FileMaker Platform][platform-shield]]()
-[![Commit Shield][commit-shield]]()
-[![Contributors][contributors-shield]]()
-[![MIT License][license-shield]][license-url]
-[![LinkedId][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -28,6 +20,14 @@
     <a href="https://github.com/stevenwhitespacesystems/fm-xml2json/issues">Request Feature</a>
   </p>
 </p>
+
+<!-- PROJECT SHIELDS -->
+[![FileMaker Version][filemaker-shield]]()
+[![FileMaker Platform][platform-shield]]()
+[![Commit Shield][commit-shield]]()
+[![Contributors][contributors-shield]]()
+[![MIT License][license-shield]][license-url]
+[![LinkedId][linkedin-shield]][linkedin-url]
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
