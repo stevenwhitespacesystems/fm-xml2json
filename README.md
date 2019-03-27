@@ -4,7 +4,7 @@
 [![Commit Shield][commit-shield]]()
 [![Contributors][contributors-shield]]()
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url
+[![LinkedId][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -94,7 +94,7 @@ Please copy the following Custom Functions to your solution before copying the s
 
 ##### Large XML Data
 
-FileMaker Pro is not the most efficient tool for text parsing. This script was designed primarily for small XML packets sent back from APIs. It wasn't designed in mind to convert large XML files into JSON.
+FileMaker Pro is not the most efficient tool for text parsing. This script was designed primarily for small XML packets sent back from APIs. It wasn't designed, in mind, to convert large XML files into JSON.
 
 However, if given enough time, this script will convert large XML files into JSON and has been optimised to the best of our ability.
 
@@ -113,13 +113,15 @@ XML Size (KB) | Execution Time (ms) | Readable Time
 
 *KB was determined using FileMaker's `Length ( field )` function.*
 
-As stated above this script wasn't developed with the purpose of taking large XML data and converting it to JSON. If you do have this need, we **strongly** suggest using a plugin or performing the conversion outside of FileMaker and then importing the result back into FileMaker.
+As stated above this script wasn't developed with the purpose of taking large XML data and converting it to JSON.
+
+If you do have this need, we **strongly** suggest using a plugin or performing the conversion outside of FileMaker and then importing the result back into FileMaker.
 
 ##### FileMaker Text Parsing Functions
 
-We have built the rules for identifying XML nodes in FileMaker using all the Text Functions available to us and from our testing it handles nearly all XML data. 
+We have built the rules for identifying XML nodes in FileMaker using all the Text Functions available to us and from our testing it has handled all the testing XML data thrown at it.
 
-However there may be some fringe cases where this breaks down. If you discover such a case, please create a [Bug Report](https://github.com/stevenwhitespacesystems/fm-xml2json/issues) and we'll see if we can correct it. Unfortunately there may be cases that can't be solved.
+However, there may be some fringe cases where this breaks down. If you discover such a case, please create a [Bug Report](https://github.com/stevenwhitespacesystems/fm-xml2json/issues) and we'll see if we can correct it. Unfortunately, there may be cases that can't be solved.
 
 ### Installation
 
