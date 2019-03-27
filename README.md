@@ -50,7 +50,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p align="center">
+  <a href="https://github.com/stevenwhitespacesystems/fm-xml2json">
+    <img src="logo.png" alt="Logo" width="580" height="208">
+  </a>
+</p>
 
 As we delved into the world of REST APIs using FileMaker, we stumbled across an issue.
 
@@ -111,6 +115,7 @@ XML Size (KB) | Execution Time (ms) | Readable Time
 35 | 8767 | 8.7s
 71 | 26435 | 26.4s
 142 | 87973 | 1min 27.9s
+283 | ?? | ??
 
 *KB was determined using FileMaker's `Length ( field )` function.*
 
@@ -128,6 +133,11 @@ However, there may be some fringe cases where this breaks down. If you discover 
 
 1. Make sure that the [Custom Functions](#custom-functions) have been added to your solution.
 2. Copy the `fm-xml2json` script to your solution.
+
+<!-- DEMO -->
+## Demo
+
+**TODO**
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -175,4 +185,3 @@ Project Link: [fm-xml2json](https://github.com/stevenwhitespacesystems/fm-xml2js
 [linkedin-url]: https://www.linkedin.com/in/stevenmcgill/
 [facebook-shield]: https://img.shields.io/badge/-facebook-white.svg?logo=facebook&colorB=3578E5
 [facebook-url]: https://www.facebook.com/WhitespaceSystemsLtd/
-[product-screenshot]: logo.png
