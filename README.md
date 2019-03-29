@@ -88,10 +88,10 @@ A FileMaker script which when passed a **valid** XML string, will covert this st
 Most parsers will convert `<a/><b/><a/>` to `{a:[{},{}],b:{}}` which merges any node of same name into an array. This library can create the following to preserve the order of elements:
 `{"elements":[{"type":"element","name":"a"},{"type":"element","name":"b"},{"type":"element","name":"a"}]}`.
 
-This is very important and it is the main reason why this library was created. Read also [Compact vs Non-Compact](###compact-vs-non-compact) for more info.
+Read also [Compact vs Non-Compact](###compact-vs-non-compact) for more info.
 
 * **Fully XML Compliant**:
-Can parse: elements, attributes, texts, comments, CData, DOCTYPE, XML declarations, and Processing Instructions.
+Can parse: elements, attributes, texts, comments, CDATA, DOCTYPE, XML declarations, and Processing Instructions.
 
 * **Minimal Dependencies**:
 This script depends only on 2 custom functions and no plugins.
@@ -118,7 +118,7 @@ The non-compact output, which is supported by this script, will produce more inf
 Another drawback of compact output is the resultant element can be an object or an array and therefore makes the client code a little awkward in terms of the extra check needed on object type before processing.
 
 NOTE: Although non-compact output is more accurate representation of original XML than compact version, the non-compact version is verbose and consumes more space.
-This library provides both options. Use `# ( "compact": False )` if you are not sure because it preserves everything;
+This script provides both options. Use `# ( "compact": False )` if you are not sure because it preserves everything;
 otherwise use `# ( "compact": True )` if you want to save space and you don't care about mixing elements of same name and losing their order.
 
 Tip: You can reduce the output size by using shorter [key names](#options-for-changing-key-names).
@@ -209,15 +209,15 @@ However, there may be some fringe cases where this breaks down. If you discover 
 
 ### Parameters
 
-The below options can be used as `# ( name ; value )` parameters for the script.
+The below parameters can be used as `# ( name ; value )` parameters for the script.
 
-| `name`              | Default | Description |
+| `name`              | Default `value` | Description |
 |:--------------------|:--------|:------------|
 | `compact`           | `false` | Whether to produce detailed object or compact object. |
 
-The below options are under consideration to be developed but currently not in the script.
+The below parameters are under consideration but currently not in the script.
 
-| `name`              | Default | Description |
+| `name`              | Default `value` | Description |
 |:--------------------|:--------|:------------|
 | `nativeType`        | `false` | Whether to attempt converting text of numerals or of boolean values to native type. For example, `"123"` will be `123` and `"true"` will be `true` |
 | `nativeTypeAttributes` | `false` | Whether to attempt converting attributes of numerals or of boolean values to native type. See also `nativeType` above. |
@@ -234,7 +234,7 @@ The below options are under consideration to be developed but currently not in t
 
 To change default key names in the output object, use the following parameters:
 
-| `name`              | Default | Description |
+| `name`              | Default `value` | Description |
 |:--------------------|:--------|:------------|
 | `declaration_key`    | `"declaration"` or `"_declaration"` | Name of the property key which will be used for the declaration. For example, if `# ( "declaration_key" ; "$declaration" )` then output of `<?xml?>` will be `{"$declaration":{}}` *(in compact form)* |
 | `instruction_key`    | `"instruction"` or `"_instruction"` | Name of the property key which will be used for the processing instruction. For example, if `# ( "instruction_key" ; "$instruction" )` then output of `<?go there?>` will be `{"$instruction":{"go":"there"}}` *(in compact form)* |
@@ -244,9 +244,10 @@ To change default key names in the output object, use the following parameters:
 | `doctype_key`        | `"doctype"` or `"_doctype"` | Name of the property key which will be used for the doctype. For example, if `# ( "doctype_key" ; "$doctype" )` then output of `<!DOCTYPE foo>` will be `{"$doctype":" foo}` *(in compact form)* |
 | `text_key`           | `"text"` or `"_text"` | Name of the property key which will be used for the text. For example, if `# ( "text_key" ; "$text" )` then output of `<a>hi</a>` will be `{"a":{"$text":"Hi"}}` *(in compact form)* |
 
-The below options are under consideration to be developed but currently not in the script.
-| `name`              | Default | Description |
-|:--------------------|:--------|:------------|
+The below parameters are under consideration but currently not in the script.
+
+| `name`              | Default `value` | Description |
+|:--------------------|:----------------|:------------|
 | `parent_key`         | `"parent"` or `"_parent"` | Name of the property key which will be used for the parent. For example, if `# ( "parent_key" ; "$parent" )` then output of `<a></b></a>` will be `{"a":{"b":{$parent:_points_to_a}}}` *(in compact form)* |
 | `type_key`           | `"type"` | Name of the property key which will be used for the type. For example, if `# ( "type_key" ; "$type" )` then output of `<a></a>` will be `{"elements":[{"$type":"element","name":"a"}]}` *(in non-compact form)* |
 | `name_key`           | `"name"` | Name of the property key which will be used for the name. For example, if `# ( "name_key" ; "$name" )` then output of `<a></a>` will be `{"elements":[{"type":"element","$name":"a"}]}` *(in non-compact form)* |
