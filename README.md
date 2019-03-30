@@ -65,7 +65,7 @@
 
 As we delved into the world of REST APIs using FileMaker, we stumbled across an issue.
 
-*How do we handle XML responses?*
+> *How do we handle XML responses?*
 
 When the REST response is a JSON object, we don't have any issue and can make use of the JSON functions introduced in FileMaker 16 to manipulate that response as we need.
 
@@ -85,7 +85,7 @@ A FileMaker script which when passed a **valid** XML string, will covert this st
 ## Features
 
 * **Maintain Order of Elements**:
-Most parsers will convert `<a/><b/><a/>` to `{a:[{},{}],b:{}}` which merges any node of same name into an array. This library can create the following to preserve the order of elements:
+Most parsers will convert `<a/><b/><a/>` to `{a:[{},{}],b:{}}` which merges any node of same name into an array. This script can create the following to preserve the order of elements:
 `{"elements":[{"type":"element","name":"a"},{"type":"element","name":"b"},{"type":"element","name":"a"}]}`.
 
 Read also [Compact vs Non-Compact](###compact-vs-non-compact) for more info.
@@ -168,7 +168,7 @@ XML Size (KB) | Execution Time (ms) | Readable Time
 
 *KB was determined using FileMaker's `Length ( field )` function.*
 
-*Benchmark tests where performed using the #( "compact" ; True ) option.*
+*Benchmark tests where performed using the #( "compact" ; True ) option and run as a server script. A 4Ghz Quad core CPU. Your experience may vary depedning on if you run the script over WAN, LAN or server architecture*
 
 As stated above this script wasn't developed with the purpose of taking large XML data and converting it to JSON.
 
@@ -190,7 +190,15 @@ However, there may be some fringe cases where this breaks down. If you discover 
 
 ### Quick Start
 
-**TODO**
+There are 2 fmp12 files provided here
+
+1. fm-xml2json.fmp12
+2. fm-xml2json-tests.fmp12
+
+`fm-xml2json.fmp12` file contains the script and custom function that you need to copy over.
+`fm-xml2json-tests.fmp12` file contains our test suite to confirm that the script behaves as intended.
+
+If you open the `fm-xml2json` file, you can paste in some xml and convert it to a json object by pressing the Convert button.
 
 ### Sample Conversions
 
@@ -214,21 +222,21 @@ The below parameters can be used as `# ( name ; value )` parameters for the scri
 | `name`              | Default `value` | Description |
 |:--------------------|:--------|:------------|
 | `compact`           | `false` | Whether to produce detailed object or compact object. |
+| `ignore_declaration` | `false` | Whether to ignore parsing declaration property. That is, no `declaration` property will be generated. |
+| `ignore_instruction` | `false` | Whether to ignore parsing processing instruction property. That is, no `instruction` property will be generated. |
+| `ignore_attributes`  | `false` | Whether to ignore parsing attributes of elements.That is, no `attributes` property will be generated. |
+| `ignore_comment`     | `false` | Whether to ignore parsing comments of the elements. That is, no `comment` will be generated. |
+| `ignore_cdata`       | `false` | Whether to ignore parsing CDATA of the elements. That is, no `cdata` will be generated. |
+| `ignore_doctype`     | `false` | Whether to ignore parsing Doctype of the elements. That is, no `doctype` will be generated. |
+| `ignore_text`        | `false` | Whether to ignore parsing texts of the elements. That is, no `text` will be generated. |
 
-The below parameters are under consideration but currently not in the script.
+The below parameters are under consideration but currently **NOT** in the script.
 
 | `name`              | Default `value` | Description |
 |:--------------------|:--------|:------------|
 | `nativeType`        | `false` | Whether to attempt converting text of numerals or of boolean values to native type. For example, `"123"` will be `123` and `"true"` will be `true` |
 | `nativeTypeAttributes` | `false` | Whether to attempt converting attributes of numerals or of boolean values to native type. See also `nativeType` above. |
 | `addParent`         | `false` | Whether to add `parent` property in each element object that points to parent object. |
-| `ignoreDeclaration` | `false` | Whether to ignore parsing declaration property. That is, no `declaration` property will be generated. |
-| `ignoreInstruction` | `false` | Whether to ignore parsing processing instruction property. That is, no `instruction` property will be generated. |
-| `ignoreAttributes`  | `false` | Whether to ignore parsing attributes of elements.That is, no `attributes` property will be generated. |
-| `ignoreComment`     | `false` | Whether to ignore parsing comments of the elements. That is, no `comment` will be generated. |
-| `ignoreCdata`       | `false` | Whether to ignore parsing CData of the elements. That is, no `cdata` will be generated. |
-| `ignoreDoctype`     | `false` | Whether to ignore parsing Doctype of the elements. That is, no `doctype` will be generated. |
-| `ignoreText`        | `false` | Whether to ignore parsing texts of the elements. That is, no `text` will be generated. |
 
 #### Options for Changing Key Names
 
@@ -244,7 +252,14 @@ To change default key names in the output object, use the following parameters:
 | `doctype_key`        | `"doctype"` or `"_doctype"` | Name of the property key which will be used for the doctype. For example, if `# ( "doctype_key" ; "$doctype" )` then output of `<!DOCTYPE foo>` will be `{"$doctype":" foo}` *(in compact form)* |
 | `text_key`           | `"text"` or `"_text"` | Name of the property key which will be used for the text. For example, if `# ( "text_key" ; "$text" )` then output of `<a>hi</a>` will be `{"a":{"$text":"Hi"}}` *(in compact form)* |
 
-The below parameters are under consideration but currently not in the script.
+Two default values mean the first is used for *non-compact* output and the second is for *compact* output.
+
+> **TIP**: In compact mode, you can further reduce output result by using fewer characters for key names `# ( "text_key" ; "_" ) & # ( "attributes_key" ; "$" ) & # ( "comment_key" ; "value" )`. This is also applicable to non-compact mode.
+
+> **TIP**: In non-compact mode, you probably want to set `# ( "text_key" ; "value" ) & # ( "cdata_key" ; "value" ) & # ( "comment_key" ; "value" )` 
+> to make it more consistent and easier for your client code to go through the contents of text, cdata, and comment.
+
+The below parameters are under consideration but currently **NOT** in the script.
 
 | `name`              | Default `value` | Description |
 |:--------------------|:----------------|:------------|
@@ -252,11 +267,6 @@ The below parameters are under consideration but currently not in the script.
 | `type_key`           | `"type"` | Name of the property key which will be used for the type. For example, if `# ( "type_key" ; "$type" )` then output of `<a></a>` will be `{"elements":[{"$type":"element","name":"a"}]}` *(in non-compact form)* |
 | `name_key`           | `"name"` | Name of the property key which will be used for the name. For example, if `# ( "name_key" ; "$name" )` then output of `<a></a>` will be `{"elements":[{"type":"element","$name":"a"}]}` *(in non-compact form)* |
 | `elements_key`       | `"elements"` | Name of the property key which will be used for the elements. For example, if `# ( "elements_key" ; "$elements" )` then output of `<a></a>` will be `{"$elements":[{"type":"element","name":"a"}]}` *(in non-compact form)* |
-
-<!-- DEMO -->
-## Demo
-
-**TODO**
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -318,3 +328,5 @@ A collection of FileMaker apps that communicate directly with popular 3rd party 
 [linkedin-url]: https://www.linkedin.com/company/whitespace-systems-ltd/
 [facebook-shield]: https://img.shields.io/badge/-facebook-white.svg?logo=facebook&colorB=3578E5
 [facebook-url]: https://www.facebook.com/WhitespaceSystemsLtd/
+
+<!-- 168 -->
