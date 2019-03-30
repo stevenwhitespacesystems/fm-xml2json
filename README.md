@@ -168,9 +168,9 @@ XML Size (KB) | Execution Time (ms) | Readable Time
 
 *KB was determined using FileMaker's `Length ( field )` function.*
 
-*Benchmark tests where performed using the #( "compact" ; True ) option and run as a server script. A 4Ghz Quad core CPU. Your experience may vary depedning on if you run the script over WAN, LAN or server architecture*
+*Benchmark tests where performed using the #( "compact" ; True ) option and run as a server script with a 4Ghz Quad core CPU. Your experience may vary depedning on if you run the script over WAN, LAN or server architecture*
 
-As stated above this script wasn't developed with the purpose of taking large XML data and converting it to JSON.
+As stated above, this script wasn't developed with the purpose of taking large XML data and converting it to JSON.
 
 If you do have this need, we **strongly** suggest using a plugin or performing the conversion outside of FileMaker and then importing the result back into FileMaker.
 
@@ -196,6 +196,7 @@ There are 2 fmp12 files provided here
 2. fm-xml2json-tests.fmp12
 
 `fm-xml2json.fmp12` file contains the script and custom function that you need to copy over.
+
 `fm-xml2json-tests.fmp12` file contains our test suite to confirm that the script behaves as intended.
 
 If you open the `fm-xml2json` file, you can paste in some xml and convert it to a json object by pressing the Convert button.
