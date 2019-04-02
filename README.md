@@ -168,7 +168,7 @@ XML Size (KB) | Execution Time (ms) | Readable Time
 
 *KB was determined using FileMaker's `Length ( field )` function.*
 
-*Benchmark tests where performed using the #( "compact" ; True ) option and run as a server script with a 4Ghz Quad core CPU. Your experience may vary depedning on if you run the script over WAN, LAN or server architecture*
+*Benchmark tests where performed using the #( "compact" ; True ) option and run as a server script with a 4Ghz Quad core CPU. Your experience may vary depending on if you run the script over WAN, LAN or server architecture*
 
 As stated above, this script wasn't developed with the purpose of taking large XML data and converting it to JSON.
 
